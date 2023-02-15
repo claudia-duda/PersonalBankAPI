@@ -39,9 +39,9 @@ namespace PersonalBankRepositories.Repositories
             return _mapper.Map<ReadDepositDto>(deposit);
         }
         //TODO remove id?
-        public async Task<ReadDepositDto> UpdateDeposit(UpdateDepositDto depositDto, int id)
+        public async Task<ReadDepositDto> UpdateDeposit(UpdateDepositDto depositDto)
         {
-            DepositModel depositFounded = await _dbContext.Deposits.FirstOrDefaultAsync(deposit => deposit.Id == id);
+            DepositModel depositFounded = await _dbContext.Deposits.FirstOrDefaultAsync(deposit => deposit.Id == depositDto.Id);
             
             if (depositFounded != null)
             {
@@ -52,7 +52,7 @@ namespace PersonalBankRepositories.Repositories
                 return _mapper.Map<ReadDepositDto>(depositDto);
             }
 
-            throw new Exception($"Deposit for id: {id}wasn't found");
+            throw new Exception($"Deposit for id: {depositDto.Id} wasn't found");
         }
         
         public async Task<bool> DeleteDeposit(int id)

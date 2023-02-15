@@ -35,10 +35,10 @@ namespace PersonalBankApi.Controllers
             return Ok(await _depositRepository.AddDeposit(deposit));
         }
         
-        [HttpPut("{id}")]
-        public async Task<ActionResult<ReadDepositDto>> UpdateDeposit([FromBody] UpdateDepositDto deposit, int id)
+        [HttpPut]
+        public async Task<ActionResult<ReadDepositDto>> UpdateDeposit([FromBody] UpdateDepositDto deposit)
         {
-            return Ok(await _depositRepository.UpdateDeposit(deposit, id));
+            return Ok(await _depositRepository.UpdateDeposit(deposit));
         }
 
         [HttpDelete("{id}")]
