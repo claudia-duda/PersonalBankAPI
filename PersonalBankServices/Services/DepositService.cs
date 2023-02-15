@@ -21,8 +21,10 @@ namespace PersonalBankServices.Repositories
 
         public async Task<List<ReadDepositDto>> GetAllDeposits()
         {
+
             List<DepositModel> deposits = await _repository.GetAllDeposits();
             return _mapper.Map<List<ReadDepositDto>>(deposits);
+
         }
 
         public async Task<ReadDepositDto> SearchById(int id)
