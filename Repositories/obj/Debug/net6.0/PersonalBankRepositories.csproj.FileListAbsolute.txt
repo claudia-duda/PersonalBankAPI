@@ -1,0 +1,17 @@
+C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\Repositories\bin\Debug\net6.0\PersonalBankRepositories.deps.json
+C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\Repositories\bin\Debug\net6.0\PersonalBankRepositories.runtimeconfig.json
+C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\Repositories\bin\Debug\net6.0\PersonalBankRepositories.dll
+C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\Repositories\bin\Debug\net6.0\PersonalBankRepositories.pdb
+C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\Repositories\bin\Debug\net6.0\PersonalBankModels.dll
+C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\Repositories\bin\Debug\net6.0\PersonalBankModels.pdb
+C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\Repositories\obj\Debug\net6.0\PersonalBankRepositories.csproj.AssemblyReference.cache
+C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\Repositories\obj\Debug\net6.0\PersonalBankRepositories.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\Repositories\obj\Debug\net6.0\PersonalBankRepositories.AssemblyInfoInputs.cache
+C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\Repositories\obj\Debug\net6.0\PersonalBankRepositories.AssemblyInfo.cs
+C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\Repositories\obj\Debug\net6.0\PersonalBankRepositories.csproj.CoreCompileInputs.cache
+C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\Repositories\obj\Debug\net6.0\PersonalBankRepositories.csproj.CopyComplete
+C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\Repositories\obj\Debug\net6.0\PersonalBankRepositories.dll
+C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\Repositories\obj\Debug\net6.0\refint\PersonalBankRepositories.dll
+C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\Repositories\obj\Debug\net6.0\PersonalBankRepositories.pdb
+C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\Repositories\obj\Debug\net6.0\PersonalBankRepositories.genruntimeconfig.cache
+C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\Repositories\obj\Debug\net6.0\ref\PersonalBankRepositories.dll
