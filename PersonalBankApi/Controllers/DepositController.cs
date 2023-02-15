@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PersonalBankModels.Dtos.Deposit;
 using PersonalBankModels.Models;
 using Repositories.Interfaces;
 
@@ -17,31 +18,31 @@ namespace PersonalBankApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<DepositModel>>> GetAllDeposits()
+        public async Task<ActionResult<List<ReadDepositDto>>> GetAllDeposits()
         { 
             return Ok(await _depositRepository.GetAllDeposits());
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<DepositModel>> SearchById(int id)
+        public async Task<ActionResult<ReadDepositDto>> SearchById(int id)
         {
             return Ok(await _depositRepository.SearchById(id));
         }
 
         [HttpPost]
-        public async Task<ActionResult<DepositModel>> AddDeposit([FromBody] DepositModel deposit)
+        public async Task<ActionResult<ReadDepositDto>> AddDeposit([FromBody] CreateDepositDto deposit)
         {
             return Ok(await _depositRepository.AddDeposit(deposit));
         }
         
         [HttpPut("{id}")]
-        public async Task<ActionResult<DepositModel>> UpdateDeposit([FromBody] DepositModel deposit, int id)
+        public async Task<ActionResult<ReadDepositDto>> UpdateDeposit([FromBody] UpdateDepositDto deposit, int id)
         {
-            return Ok(await _depositRepository.AddDeposit(deposit));
+            return Ok(await _depositRepository.UpdateDeposit(deposit, id));
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<DepositModel>> DeleteDeposit(int id)
+        public async Task<ActionResult<ReadDepositDto>> DeleteDeposit(int id)
         {
             return Ok(await _depositRepository.DeleteDeposit(id));
         }

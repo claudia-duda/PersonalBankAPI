@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "QCEgpv2HGUa0p9eGMKg2pRgUP+Fq/AQ/b5mu5irY+gkMFRLdLdwtmf5kdOseXActPK0lfx3yjjofknwqecaMwA==",
+  "dgSpecHash": "B2h/1WLjOfwl5s+0aEhXycMSgGKiiZUHVk37vVcLSBbIw3D8ymSIuZl3iu5UQzYkVhk4y28jjjr5mPPti6KhBA==",
   "success": true,
   "projectFilePath": "C:\\Users\\claud\\OneDrive\\Documentos\\estudo\\c#\\PersonalBankApi\\PersonalBankApi\\PersonalBankApi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\claud\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\claud\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "C:\\Users\\claud\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
-    "C:\\Users\\claud\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\claud\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\claud\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\claud\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\claud\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.0\\microsoft.entityframeworkcore.6.0.0.nupkg.sha512",

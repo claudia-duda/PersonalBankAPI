@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PersonalBankModels.Profiles;
 using PersonalBankRepositories.Repositories;
 using Repositories;
 using Repositories.Interfaces;
@@ -15,8 +16,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSqlServer<AppDbContext>(
     builder.Configuration.GetConnectionString("DataBase")
 );
+
 builder.Services.AddScoped<IDepositRepository, DepositRepository>();
 
+builder.Services.AddAutoMapper(typeof(DepositProfile));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

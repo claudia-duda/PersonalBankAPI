@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using PersonalBankModels.Dtos.Deposit;
 using PersonalBankModels.Models;
 using Repositories;
 using Repositories.Interfaces;
@@ -9,42 +11,45 @@ namespace PersonalBankRepositories.Repositories
     public class DepositRepository : IDepositRepository
     {
         private readonly AppDbContext _dbContext;
+        private IMapper _mapper;
 
-        public DepositRepository(AppDbContext dbContext)
+        public DepositRepository(AppDbContext dbContext, IMapper mapper)
         {
             _dbContext= dbContext;
+            _mapper = mapper;
         }
 
-        public async Task<List<DepositModel>> GetAllDeposits()
+        public async Task<List<ReadDepositDto>> GetAllDeposits()
         {
-            return await _dbContext.Deposits.ToListAsync();
+            List<DepositModel> deposits = await _dbContext.Deposits.ToListAsync();
+            return _mapper.Map<List<ReadDepositDto>>(deposits);
         }
 
-        public async Task<DepositModel> SearchById(int id)
+        public async Task<ReadDepositDto> SearchById(int id)
         {
-            return await _dbContext.Deposits.FirstOrDefaultAsync(deposit => deposit.Id == id);
+            DepositModel deposit = await _dbContext.Deposits.FirstOrDefaultAsync(deposit => deposit.Id == id);
+            return _mapper.Map<ReadDepositDto>(deposit);
         }
 
-        public async Task<DepositModel> AddDeposit(DepositModel deposit)
+        public async Task<ReadDepositDto> AddDeposit(CreateDepositDto depositDto)
         {
+            DepositModel deposit = _mapper.Map<DepositModel>(depositDto);
             await _dbContext.Deposits.AddAsync(deposit);
             await _dbContext.SaveChangesAsync();
-            return deposit;
+            return _mapper.Map<ReadDepositDto>(deposit);
         }
         //TODO remove id?
-        public async Task<DepositModel> UpdateDeposit(DepositModel deposit, int id)
+        public async Task<ReadDepositDto> UpdateDeposit(UpdateDepositDto depositDto, int id)
         {
-            DepositModel depositFounded = await SearchById(id);
+            DepositModel depositFounded = await _dbContext.Deposits.FirstOrDefaultAsync(deposit => deposit.Id == id);
+            
             if (depositFounded != null)
             {
-                //TODO  mapper deposit
-                depositFounded.Description = deposit.Description;
-                depositFounded.AccountNumber = deposit.AccountNumber;
-                depositFounded.Amount = deposit.Amount;
+                _mapper.Map(depositDto, depositFounded);
 
                 _dbContext.Deposits.Update(depositFounded);
                 await _dbContext.SaveChangesAsync();
-                return depositFounded;
+                return _mapper.Map<ReadDepositDto>(depositDto);
             }
 
             throw new Exception($"Deposit for id: {id}wasn't found");
@@ -52,14 +57,14 @@ namespace PersonalBankRepositories.Repositories
         
         public async Task<bool> DeleteDeposit(int id)
         {
-            DepositModel depositFounded = await SearchById(id);
+            DepositModel depositFounded = await _dbContext.Deposits.FirstOrDefaultAsync(deposit => deposit.Id == id);
             if (depositFounded != null)
             {
                 _dbContext.Deposits.Remove(depositFounded);
                 await _dbContext.SaveChangesAsync();
                 return true;
             }
-            throw new Exception($"Deposit for id: {id}wasn't found");
+            throw new Exception($"Deposit for id: {id} wasn't found");
         }
     }
 }
