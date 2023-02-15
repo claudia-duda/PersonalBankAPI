@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using PersonalBankModels.Profiles;
 using PersonalBankRepositories.Repositories;
+using PersonalBankServices.Interfaces;
+using PersonalBankServices.Repositories;
 using Repositories;
 using Repositories.Interfaces;
 
@@ -17,7 +19,8 @@ builder.Services.AddSqlServer<AppDbContext>(
     builder.Configuration.GetConnectionString("DataBase")
 );
 
-builder.Services.AddScoped<IDepositRepository, DepositRepository>();
+builder.Services.AddTransient<IDepositRepository, DepositRepository>();
+builder.Services.AddScoped<IDepositService, DepositService>();
 
 builder.Services.AddAutoMapper(typeof(DepositProfile));
 var app = builder.Build();

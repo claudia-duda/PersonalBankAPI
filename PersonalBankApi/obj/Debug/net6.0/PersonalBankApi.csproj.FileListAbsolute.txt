@@ -71,3 +71,5 @@ C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\PersonalBankApi\obj
 C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\PersonalBankApi\obj\Debug\net6.0\PersonalBankApi.pdb
 C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\PersonalBankApi\obj\Debug\net6.0\PersonalBankApi.genruntimeconfig.cache
 C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\PersonalBankApi\obj\Debug\net6.0\ref\PersonalBankApi.dll
+C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\PersonalBankApi\bin\Debug\net6.0\PersonalBankServices.dll
+C:\Users\claud\OneDrive\Documentos\estudo\c#\PersonalBankApi\PersonalBankApi\bin\Debug\net6.0\PersonalBankServices.pdb

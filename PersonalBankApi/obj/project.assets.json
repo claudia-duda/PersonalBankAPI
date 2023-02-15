@@ -2179,6 +2179,20 @@
         "runtime": {
           "bin/placeholder/PersonalBankRepositories.dll": {}
         }
+      },
+      "PersonalBankServices/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0",
+          "PersonalBankRepositories": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PersonalBankServices.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PersonalBankServices.dll": {}
+        }
       }
     }
   },
@@ -6854,6 +6868,11 @@
       "type": "project",
       "path": "../Repositories/PersonalBankRepositories.csproj",
       "msbuildProject": "../Repositories/PersonalBankRepositories.csproj"
+    },
+    "PersonalBankServices/1.0.0": {
+      "type": "project",
+      "path": "../PersonalBankServices/PersonalBankServices.csproj",
+      "msbuildProject": "../PersonalBankServices/PersonalBankServices.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6861,7 +6880,7 @@
       "Microsoft.EntityFrameworkCore >= 6.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.0",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.17.0",
-      "PersonalBankRepositories >= 1.0.0",
+      "PersonalBankServices >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.2.3"
     ]
   },
@@ -6892,8 +6911,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\claud\\OneDrive\\Documentos\\estudo\\c#\\PersonalBankApi\\Repositories\\PersonalBankRepositories.csproj": {
-              "projectPath": "C:\\Users\\claud\\OneDrive\\Documentos\\estudo\\c#\\PersonalBankApi\\Repositories\\PersonalBankRepositories.csproj"
+            "C:\\Users\\claud\\OneDrive\\Documentos\\estudo\\c#\\PersonalBankApi\\PersonalBankServices\\PersonalBankServices.csproj": {
+              "projectPath": "C:\\Users\\claud\\OneDrive\\Documentos\\estudo\\c#\\PersonalBankApi\\PersonalBankServices\\PersonalBankServices.csproj"
             }
           }
         }
