@@ -2,7 +2,7 @@
 using PersonalBankModels.Dtos.Deposit;
 using PersonalBankModels.Models;
 using PersonalBankServices.Interfaces;
-using Repositories.Interfaces;
+using PersonalBankRepositories.Interfaces;
 
 
 namespace PersonalBankServices.Repositories

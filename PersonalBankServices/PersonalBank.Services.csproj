@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Repositories\PersonalBank.Repositories.csproj" />
+    <ProjectReference Include="..\PersonalBankRepositories\PersonalBank.Repositories.csproj" />
   </ItemGroup>
 
 </Project>

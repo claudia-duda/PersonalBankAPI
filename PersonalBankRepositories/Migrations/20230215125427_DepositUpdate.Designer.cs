@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Repositories;
+using PersonalBankRepositories;
 
 #nullable disable
 
 namespace PersonalBankRepositories.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230216124245_CreateTransfer")]
-    partial class CreateTransfer
+    [Migration("20230215125427_DepositUpdate")]
+    partial class DepositUpdate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,31 +48,6 @@ namespace PersonalBankRepositories.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Deposits");
-                });
-
-            modelBuilder.Entity("PersonalBankModels.Models.TransferModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("AccountNumber")
-                        .HasColumnType("int");
-
-                    b.Property<float>("Amount")
-                        .HasColumnType("real");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("dateTransaction")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Transfers");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using Repositories;
+using PersonalBankRepositories;
 
 namespace PersonalBankApi.Data
 {

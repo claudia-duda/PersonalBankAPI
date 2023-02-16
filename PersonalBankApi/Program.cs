@@ -3,8 +3,8 @@ using PersonalBankModels.Profiles;
 using PersonalBankRepositories.Repositories;
 using PersonalBankServices.Interfaces;
 using PersonalBankServices.Repositories;
-using Repositories;
-using Repositories.Interfaces;
+using PersonalBankRepositories;
+using PersonalBankRepositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

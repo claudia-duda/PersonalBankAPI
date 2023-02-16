@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalBank.Api", "PersonalBankApi\PersonalBank.Api.csproj", "{0D3FF5AD-9037-4606-AE2B-CE10B05E65E8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalBank.Repositories", "Repositories\PersonalBank.Repositories.csproj", "{18287025-627E-4964-9145-2ED0A571B024}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalBank.Repositories", "PersonalBankRepositories\PersonalBank.Repositories.csproj", "{18287025-627E-4964-9145-2ED0A571B024}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalBank.Models", "PersonalBankModels\PersonalBank.Models.csproj", "{2F095A0D-A7DC-4A0A-871E-0E2165FB8637}"
 EndProject

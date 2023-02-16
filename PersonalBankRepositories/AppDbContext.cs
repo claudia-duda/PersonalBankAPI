@@ -2,7 +2,7 @@
 using PersonalBankModels.Models;
 using PersonalBankRepositories.Data.Map;
 
-namespace Repositories
+namespace PersonalBankRepositories
 {
     public class AppDbContext : DbContext
     {

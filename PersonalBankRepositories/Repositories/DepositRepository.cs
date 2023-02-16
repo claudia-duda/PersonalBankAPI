@@ -2,8 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using PersonalBankModels.Dtos.Deposit;
 using PersonalBankModels.Models;
-using Repositories;
-using Repositories.Interfaces;
+using PersonalBankRepositories;
+using PersonalBankRepositories.Interfaces;
 
 
 namespace PersonalBankRepositories.Repositories

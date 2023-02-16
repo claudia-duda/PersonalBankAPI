@@ -2,7 +2,7 @@
 using PersonalBankModels.Dtos.Deposit;
 using PersonalBankModels.Models;
 
-namespace Repositories.Interfaces
+namespace PersonalBankRepositories.Interfaces
 {
     public interface ITransferRepository
     {   //TODO use inumerable?
