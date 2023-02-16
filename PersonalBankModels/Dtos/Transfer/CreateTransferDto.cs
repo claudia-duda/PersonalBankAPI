@@ -1,7 +1,12 @@
-﻿
-namespace PersonalBankModels.Dtos.Deposit
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PersonalBankModels.Dtos.Transfer
 {   
-    public class CreateDepositDto
+    public class CreateTransferDto
     {
         public float Amount { get; set; }
         public int AccountNumber { get; set; }

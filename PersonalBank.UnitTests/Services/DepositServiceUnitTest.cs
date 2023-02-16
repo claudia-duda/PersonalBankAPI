@@ -1,4 +1,4 @@
-namespace PersonalBank.UnitTests
+namespace PersonalBank.UnitTests.Services
 {
     public class UnitTest1
     {

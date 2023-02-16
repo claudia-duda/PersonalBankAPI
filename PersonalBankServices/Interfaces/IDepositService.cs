@@ -1,5 +1,4 @@
 ﻿using PersonalBankModels.Dtos.Deposit;
-using PersonalBankModels.Models;
 
 namespace PersonalBankServices.Interfaces
 {

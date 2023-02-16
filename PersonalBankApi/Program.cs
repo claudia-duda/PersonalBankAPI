@@ -20,7 +20,10 @@ builder.Services.AddSqlServer<AppDbContext>(
 );
 
 builder.Services.AddTransient<IDepositRepository, DepositRepository>();
+builder.Services.AddTransient<ITransferRepository, TransferRepository>();
+
 builder.Services.AddScoped<IDepositService, DepositService>();
+builder.Services.AddScoped<ITransferService, TransferService>();
 
 builder.Services.AddAutoMapper(typeof(DepositProfile));
 var app = builder.Build();

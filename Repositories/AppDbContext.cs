@@ -13,9 +13,13 @@ namespace Repositories
 
         public DbSet<DepositModel> Deposits { get; set; }
 
+        public DbSet<TransferModel> Transfers { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new DepositMap());
+            modelBuilder.ApplyConfiguration(new DepositMap());
+
             base.OnModelCreating(modelBuilder);
         }
 

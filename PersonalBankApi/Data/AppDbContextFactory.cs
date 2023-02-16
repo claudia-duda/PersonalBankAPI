@@ -16,7 +16,7 @@ namespace PersonalBankApi.Data
 
             var builder = new DbContextOptionsBuilder<AppDbContext>()
                 .UseSqlServer(config.GetConnectionString("DataBase"),
-                b => b.MigrationsAssembly("PersonalBankRepositories"));
+                b => b.MigrationsAssembly("PersonalBank.Repositories"));
 
             return new AppDbContext(builder.Options);
         }
