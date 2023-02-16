@@ -13,6 +13,7 @@ namespace PersonalBankRepositories.Data.Map
             builder.Property(x => x.Description).HasMaxLength(255);
             builder.Property(x => x.Amount).IsRequired();
             builder.Property(x => x.AccountNumber).IsRequired();
+            builder.Property(x => x.dateTransaction).IsRequired();
         }
     }
 }
