@@ -24,7 +24,7 @@ namespace PersonalBankRepositories.Repositories
 
         public async Task<TransferModel> SearchById(int id)
         {
-            return await _dbContext.Transfers.FirstOrDefaultAsync(transfer => transfer.Id == id);
+            return await _dbContext.Transfers.AsNoTracking().SingleOrDefaultAsync(transfer => transfer.Id == id);
         }
 
         public async Task<TransferModel> AddTransfer(TransferModel transfer )
@@ -37,19 +37,10 @@ namespace PersonalBankRepositories.Repositories
 
         public async Task<TransferModel> UpdateTransfer(TransferModel transfer)
         {
-            TransferModel depositFounded = await _dbContext.Transfers.FirstOrDefaultAsync(transfer => transfer.Id == transfer.Id);
-            
-            if (depositFounded != null)
-            {
 
-                _dbContext.Attach(transfer);
-                _dbContext.Entry(transfer).State = EntityState.Modified;
-
-                await _dbContext.SaveChangesAsync();
-                return transfer;
-            }
-
-            return null;
+            _dbContext.Transfers.Update(transfer);
+            await _dbContext.SaveChangesAsync();
+            return transfer;
         }
         
         public async Task<bool> DeleteTransfer(int id)

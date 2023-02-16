@@ -42,15 +42,16 @@ namespace PersonalBankServices.Repositories
         }
 
         public async Task<ReadTransferDto> UpdateTransfer(UpdateTransferDto transferDto)
-        {       
+        {
+            var transferFounded = await SearchById(transferDto.Id);
 
+            if (transferFounded != null)
+            {
+                var transferMapped = _mapper.Map<TransferModel>(transferDto);
 
-            TransferModel TransferChanged = await _repository.UpdateTransfer(
-                    _mapper.Map<TransferModel>(transferDto));
+                var transferChanged = await _repository.UpdateTransfer(transferMapped);
 
-            if (TransferChanged != null)
-            {                
-                return _mapper.Map<ReadTransferDto>(transferDto);
+                return _mapper.Map<ReadTransferDto>(transferChanged);
             }
 
             throw new Exception($"Transfer for id: {transferDto.Id} wasn't found");
