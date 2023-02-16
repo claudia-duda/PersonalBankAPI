@@ -9,7 +9,6 @@ namespace PersonalBankApi.Controllers
     [ApiController]
     public class TransferController : ControllerBase
     {   
-        //TODO transform repository like a service?
         private readonly ITransferService _TransferService;
 
         public TransferController(ITransferService TransferService)

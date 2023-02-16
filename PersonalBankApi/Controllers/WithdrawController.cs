@@ -9,7 +9,6 @@ namespace PersonalBankApi.Controllers
     [ApiController]
     public class WithdrawController : ControllerBase
     {   
-        //TODO transform repository like a service?
         private readonly IWithdrawService _WithdrawService;
 
         public WithdrawController(IWithdrawService WithdrawService)
