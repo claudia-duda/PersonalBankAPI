@@ -56,10 +56,11 @@ namespace PersonalBankServices.Repositories
 
             throw new Exception($"Transfer for id: {transferDto.Id} wasn't found");
         }
-        
+
         public async Task<bool> DeleteTransfer(int id)
         {
             bool transferDeleted = await _repository.DeleteTransfer(id);
+
             if (transferDeleted != false)
             {
                 return true;//TODO sucess message

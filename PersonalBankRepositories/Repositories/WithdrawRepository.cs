@@ -24,7 +24,7 @@ namespace PersonalBankRepositories.Repositories
 
         public async Task<WithdrawModel> SearchById(int id)
         {
-            return await _dbContext.Withdraws.FirstOrDefaultAsync(withdraw => withdraw.Id == id);
+            return await _dbContext.Withdraws.AsNoTracking().SingleOrDefaultAsync(withdraw => withdraw.Id == id);
         }
 
         public async Task<WithdrawModel> AddWithdraw(WithdrawModel Withdraw )
@@ -37,31 +37,22 @@ namespace PersonalBankRepositories.Repositories
 
         public async Task<WithdrawModel> UpdateWithdraw(WithdrawModel withdraw)
         {
-            WithdrawModel depositFounded = await _dbContext.Withdraws.FirstOrDefaultAsync(Withdraw => Withdraw.Id == Withdraw.Id);
-            
-            if (depositFounded != null)
-            {
-
-                _dbContext.Attach(withdraw);
-                _dbContext.Entry(withdraw).State = EntityState.Modified;
-
-                await _dbContext.SaveChangesAsync();
-                return withdraw;
-            }
-
-            return null;
+            _dbContext.Withdraws.Update(withdraw);
+            await _dbContext.SaveChangesAsync();
+            return withdraw;
         }
-        
+
         public async Task<bool> DeleteWithdraw(int id)
         {
-            WithdrawModel withdrawFounded = await _dbContext.Withdraws.FirstOrDefaultAsync(Withdraw => Withdraw.Id == id);
-            if (withdrawFounded != null)
+            var withdrawDeleted = await SearchById(id);
+            if (withdrawDeleted != null)
             {
-                _dbContext.Withdraws.Remove(withdrawFounded);
+                _dbContext.Withdraws.Remove(withdrawDeleted);
                 await _dbContext.SaveChangesAsync();
                 return true;
             }
-            return false;            
+            return false;
+
         }
     }
 }

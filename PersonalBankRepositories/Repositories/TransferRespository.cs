@@ -42,17 +42,18 @@ namespace PersonalBankRepositories.Repositories
             await _dbContext.SaveChangesAsync();
             return transfer;
         }
-        
+
         public async Task<bool> DeleteTransfer(int id)
         {
-            TransferModel transferFounded = await _dbContext.Transfers.FirstOrDefaultAsync(transfer => transfer.Id == id);
-            if (transferFounded != null)
+            var transferDeleted = await SearchById(id);
+            if (transferDeleted != null)
             {
-                _dbContext.Transfers.Remove(transferFounded);
+                _dbContext.Transfers.Remove(transferDeleted);
                 await _dbContext.SaveChangesAsync();
                 return true;
             }
-            return false;            
+            return false;
+
         }
     }
 }

@@ -41,25 +41,27 @@ namespace PersonalBankServices.Repositories
             return _mapper.Map<ReadWithdrawDto>(Withdraw);
         }
 
-        public async Task<ReadWithdrawDto> UpdateWithdraw(UpdateWithdrawDto WithdrawDto)
-        {       
+        public async Task<ReadWithdrawDto> UpdateWithdraw(UpdateWithdrawDto withdrawDto)
+        {
+            var WithdrawFounded = await SearchById(withdrawDto.Id);
 
+            if (WithdrawFounded != null)
+            {
+                var withdrawMapped = _mapper.Map<WithdrawModel>(withdrawDto);
 
-            WithdrawModel WithdrawChanged = await _repository.UpdateWithdraw(
-                    _mapper.Map<WithdrawModel>(WithdrawDto));
+                var transferChanged = await _repository.UpdateWithdraw(withdrawMapped);
 
-            if (WithdrawChanged != null)
-            {                
-                return _mapper.Map<ReadWithdrawDto>(WithdrawDto);
+                return _mapper.Map<ReadWithdrawDto>(transferChanged);
             }
 
-            throw new Exception($"Withdraw for id: {WithdrawDto.Id} wasn't found");
+            throw new Exception($"Withdraw for id: {withdrawDto.Id} wasn't found");
         }
-        
+
         public async Task<bool> DeleteWithdraw(int id)
         {
-            bool WithdrawDeleted = await _repository.DeleteWithdraw(id);
-            if (WithdrawDeleted != false)
+            bool withdrawDeleted = await _repository.DeleteWithdraw(id);
+
+            if (withdrawDeleted != false)
             {
                 return true;//TODO sucess message
             }

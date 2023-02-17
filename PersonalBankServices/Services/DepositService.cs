@@ -57,17 +57,13 @@ namespace PersonalBankServices.Repositories
 
             throw new Exception($"Deposit for id: {depositDto.Id} wasn't found");
         }
-        
+
         public async Task<bool> DeleteDeposit(int id)
         {
+            bool depositDeleted = await _repository.DeleteDeposit(id);
 
-            var depositFounded = SearchById(id);
-
-            if (depositFounded != null)
+            if (depositDeleted != false)
             {
-                var depositChanged = await _repository.DeleteDeposit(
-                    _mapper.Map<DepositModel>(depositFounded));
-
                 return true;//TODO sucess message
             }
 

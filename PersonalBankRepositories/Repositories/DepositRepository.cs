@@ -36,19 +36,23 @@ namespace PersonalBankRepositories.Repositories
         public async Task<DepositModel> UpdateDeposit(DepositModel deposit)
         {
 
-                _dbContext.Deposits.Update(deposit);
-                await _dbContext.SaveChangesAsync();
-                return deposit;
+            _dbContext.Deposits.Update(deposit);
+            await _dbContext.SaveChangesAsync();
+            return deposit;
    
         }
         
-        public async Task<bool> DeleteDeposit(DepositModel deposit)
+        public async Task<bool> DeleteDeposit(int id)
         {
-            //implement execption
-            _dbContext.Deposits.Remove(deposit);
-            await _dbContext.SaveChangesAsync();
-            return true;
-          
+            var depositFounded = await SearchById(id);
+            if (depositFounded != null)
+            {
+                _dbContext.Deposits.Remove(depositFounded);
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+            return false;
+
         }
     }
 }

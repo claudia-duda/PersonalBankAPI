@@ -41,7 +41,7 @@ namespace PersonalBankApi.Controllers
         }
 
         [HttpDelete("{id}")]    
-        public async Task<ActionResult<ReadDepositDto>> DeleteDeposit(int id)
+        public async Task<ActionResult<bool>> DeleteDeposit(int id)
         {
             return Ok(await _depositService.DeleteDeposit(id));
         }
