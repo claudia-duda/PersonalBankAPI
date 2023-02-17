@@ -16,7 +16,7 @@ namespace PersonalBankApi.Controllers
             _WithdrawService = WithdrawService;
         }
 
-        [HttpGet]
+        [HttpGet("GetAllWithdraws")]
         public async Task<ActionResult<List<ReadWithdrawDto>>> GetAllWithdraws()
         { 
             return Ok(await _WithdrawService.GetAllWithdraws());
@@ -28,13 +28,13 @@ namespace PersonalBankApi.Controllers
             return Ok(await _WithdrawService.SearchById(id));
         }
 
-        [HttpPost]
+        [HttpPost("CreateWithdraw")]
         public async Task<ActionResult<ReadWithdrawDto>> AddWithdraw([FromBody] CreateWithdrawDto Withdraw)
         {
             return Ok(await _WithdrawService.AddWithdraw(Withdraw));
         }
         
-        [HttpPut]
+        [HttpPut("UpdateWithdraw")]
         public async Task<ActionResult<ReadWithdrawDto>> UpdateWithdraw([FromBody] UpdateWithdrawDto Withdraw)
         {
             return Ok(await _WithdrawService.UpdateWithdraw(Withdraw));

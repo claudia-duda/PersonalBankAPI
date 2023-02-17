@@ -16,7 +16,7 @@ namespace PersonalBankApi.Controllers
             _TransferService = TransferService;
         }
 
-        [HttpGet]
+        [HttpGet("GetAllTransfers")]
         public async Task<ActionResult<List<ReadTransferDto>>> GetAllTransfers()
         { 
             return Ok(await _TransferService.GetAllTransfers());
@@ -28,13 +28,13 @@ namespace PersonalBankApi.Controllers
             return Ok(await _TransferService.SearchById(id));
         }
 
-        [HttpPost]
+        [HttpPost("CreateTransfer")]
         public async Task<ActionResult<ReadTransferDto>> AddTransfer([FromBody] CreateTransferDto transfer)
         {
             return Ok(await _TransferService.AddTransfer(transfer));
         }
         
-        [HttpPut]
+        [HttpPut("UpdateTransfer")]
         public async Task<ActionResult<ReadTransferDto>> UpdateTransfer([FromBody] UpdateTransferDto transfer)
         {
             return Ok(await _TransferService.UpdateTransfer(transfer));

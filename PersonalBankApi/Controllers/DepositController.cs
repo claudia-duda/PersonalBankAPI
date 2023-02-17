@@ -16,7 +16,7 @@ namespace PersonalBankApi.Controllers
             _depositService = depositService;
         }
 
-        [HttpGet]
+        [HttpGet("GetAllDeposits")]
         public async Task<ActionResult<List<ReadDepositDto>>> GetAllDeposits()
         { 
             return Ok(await _depositService.GetAllDeposits());
@@ -28,13 +28,13 @@ namespace PersonalBankApi.Controllers
             return Ok(await _depositService.SearchById(id));
         }
 
-        [HttpPost]
+        [HttpPost("CreateDeposit")]
         public async Task<ActionResult<ReadDepositDto>> AddDeposit([FromBody] CreateDepositDto deposit)
         {
             return Ok(await _depositService.AddDeposit(deposit));
         }
         
-        [HttpPut]
+        [HttpPut("UpdateDeposit")]
         public async Task<ActionResult<ReadDepositDto>> UpdateDeposit([FromBody] UpdateDepositDto deposit)
         {
             return Ok(await _depositService.UpdateDeposit(deposit));
