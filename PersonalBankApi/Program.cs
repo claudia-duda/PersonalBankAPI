@@ -22,10 +22,12 @@ builder.Services.AddSqlServer<AppDbContext>(
 builder.Services.AddTransient<IDepositRepository, DepositRepository>();
 builder.Services.AddTransient<ITransferRepository, TransferRepository>();
 builder.Services.AddTransient<IWithdrawRepository, WithdrawRepository>();
+builder.Services.AddTransient<IAccountRepository, AccountRepository>();
 
 builder.Services.AddScoped<IDepositService, DepositService>();
 builder.Services.AddScoped<ITransferService, TransferService>();
 builder.Services.AddScoped<IWithdrawService, WithdrawService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
 
 builder.Services.AddAutoMapper(typeof(DepositProfile));
 var app = builder.Build();

@@ -11,12 +11,14 @@ namespace PersonalBankServices.Repositories
     {
         //TODO implement try catch
         private IDepositRepository _repository;
+        private IAccountRepository _accountRepository;
         private IMapper _mapper;
 
-        public DepositService(IDepositRepository repository, IMapper mapper)
+        public DepositService(IDepositRepository repository, IMapper mapper, IAccountRepository accountRepository)
         {
             _repository = repository;
             _mapper = mapper;
+            _accountRepository = accountRepository;
         }
 
         public async Task<List<ReadDepositDto>> GetAllDeposits()
@@ -35,11 +37,20 @@ namespace PersonalBankServices.Repositories
 
         public async Task<ReadDepositDto> AddDeposit(CreateDepositDto depositDto)
         {
-            var deposit = _mapper.Map<DepositModel>(depositDto);
-            await _repository.AddDeposit(deposit);
+            if(depositDto.Amount > 0)
+            {
+                var deposit = _mapper.Map<DepositModel>(depositDto);
+                await _repository.AddDeposit(deposit);
 
-            return _mapper.Map<ReadDepositDto>(deposit);
+                AccountModel balance = await _accountRepository.GetBalance();
+                balance.ActualBalance += deposit.Amount;
+                await _accountRepository.UpdateBalance(balance);
+
+                return _mapper.Map<ReadDepositDto>(deposit);
+            }
+                throw new Exception("Amount value isn't valid to deposit in your account");
         }
+
 
         public async Task<ReadDepositDto> UpdateDeposit(UpdateDepositDto depositDto)
         {
@@ -48,10 +59,14 @@ namespace PersonalBankServices.Repositories
 
             if (depositFounded != null)
             {
-                var depositMapped = _mapper.Map<DepositModel>(depositDto);
-    
-                var depositChanged = await _repository.UpdateDeposit(depositMapped);
+                AccountModel balance = await _accountRepository.GetBalance();
+                balance.ActualBalance -= depositFounded.Amount;
 
+                var depositMapped = _mapper.Map<DepositModel>(depositDto);
+                balance.ActualBalance += depositMapped.Amount;
+                await _accountRepository.UpdateBalance(balance);
+
+                var depositChanged = await _repository.UpdateDeposit(depositMapped);
                 return _mapper.Map<ReadDepositDto>(depositChanged);
             }
 
@@ -60,11 +75,19 @@ namespace PersonalBankServices.Repositories
 
         public async Task<bool> DeleteDeposit(int id)
         {
-            bool depositDeleted = await _repository.DeleteDeposit(id);
+            var depositDeleted = await SearchById(id);
 
-            if (depositDeleted != false)
+            if (depositDeleted != null)
             {
-                return true;//TODO sucess message
+                AccountModel balance = await _accountRepository.GetBalance();
+                balance.ActualBalance -= depositDeleted.Amount;
+                if(balance.ActualBalance < 0)
+                {
+                    balance.ActualBalance = 0;
+                }
+                await _accountRepository.UpdateBalance(balance);
+
+                return await _repository.DeleteDeposit(id);
             }
 
             throw new Exception($"Deposit for id: {id} wasn't found");
