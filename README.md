@@ -8,11 +8,24 @@ this API was developed aiming to be a service for registering personal expenses,
 </p>
 
 <p align="center">
+  <a href="about-this-project">About</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-downloading-the-project">Downloading</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-installing-dependencies">Installing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
   <a href="#-configuring-the-project">Configuring</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
-  <a href="#-running-the-project">Running</a>&nbsp;&nbsp;&nbsp;
+  <a href="-running-the-project">Running</a>&nbsp;&nbsp;&nbsp;
 </p>
+<br>
+
+
+## About this project
+It was developed with a view to registering three types of financial transactions: withdraw, deposits, and transfers. The main idea is to have control of all your financial transactions that must follow according to your current balance. You will have space to update, edit, search, list and delete each transaction that has been registered, which may impact your current balance.
+
+Next steps
+- Develop unit tests for each entity using XUnit, implementing them separately by responsibility (service, repository, etc)
+- Improve the account model to allow for individualized registration
+- Create an authentication and authorization system to view transactions according to the user type
+- Integrate with the frontend <a href="https://github.com/claudia-duda/PersonalBank">PersonalBank</a>
+- Deploy the application in a production environment for external access.(Heroku/Docker)
 
 <br>
 
@@ -45,7 +58,10 @@ Save the file.
 2. Run the project by clicking on the "Play" button in the toolbar, or by pressing F5.
 3. Wait for the project to build and for the browser to open.
 4. The project should now be running and accessible at the URL displayed in the browser.
+5. Now you're ready to see all endpoints through Swagger
+5. Access the file  <a href="https://github.com/claudia-duda/PersonalBankAPI/blob/master/personalbankapi-swagger.json">Swagger documentation to the endpoints</a>
 
 <p align="center">
 ☑️ You are now ready to explore this API :)
 </p>
+
