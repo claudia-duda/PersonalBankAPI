@@ -14,12 +14,14 @@ namespace PersonalBankRepositories
         public DbSet<DepositModel> Deposits { get; set; }
         public DbSet<TransferModel> Transfers { get; set; }
         public DbSet<WithdrawModel> Withdraws { get; set; }
+        public DbSet<AccountModel> Account { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new DepositMap());
             modelBuilder.ApplyConfiguration(new TransferMap());
             modelBuilder.ApplyConfiguration(new WithdrawMap());
+            modelBuilder.ApplyConfiguration(new AccounttMap());
 
             base.OnModelCreating(modelBuilder);
         }

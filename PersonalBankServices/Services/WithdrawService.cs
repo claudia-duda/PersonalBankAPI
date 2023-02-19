@@ -12,11 +12,13 @@ namespace PersonalBankServices.Repositories
         //TODO implement try catch
         private IWithdrawRepository _repository;
         private IMapper _mapper;
+        private IAccountRepository _accountRepository;
 
-        public WithdrawService(IWithdrawRepository repository, IMapper mapper)
+        public WithdrawService(IWithdrawRepository repository, IMapper mapper, IAccountRepository accountRepository)
         {
             _repository = repository;
             _mapper = mapper;
+            _accountRepository = accountRepository;
         }
 
         public async Task<List<ReadWithdrawDto>> GetAllWithdraws()
@@ -35,10 +37,25 @@ namespace PersonalBankServices.Repositories
 
         public async Task<ReadWithdrawDto> AddWithdraw(CreateWithdrawDto WithdrawDto)
         {
-            WithdrawModel Withdraw = _mapper.Map<WithdrawModel>(WithdrawDto);
-            await _repository.AddWithdraw(Withdraw);
+            AccountModel balance = await _accountRepository.GetBalance();
+            if (WithdrawDto.Amount > 0 && balance.ActualBalance > WithdrawDto.Amount)
+            {
+                var withdraw = _mapper.Map<WithdrawModel>(WithdrawDto);
+                balance.ActualBalance -= withdraw.Amount;
+                if (balance.ActualBalance < 0)
+                {
+                    balance.ActualBalance = 0;
+                }
 
-            return _mapper.Map<ReadWithdrawDto>(Withdraw);
+                await _accountRepository.UpdateBalance(balance);
+                await _repository.AddWithdraw(withdraw);
+
+                return _mapper.Map<ReadWithdrawDto>(withdraw);
+
+            }
+
+            throw new Exception($"Withdraw wasn't suceeded");
+
         }
 
         public async Task<ReadWithdrawDto> UpdateWithdraw(UpdateWithdrawDto withdrawDto)
@@ -47,11 +64,19 @@ namespace PersonalBankServices.Repositories
 
             if (WithdrawFounded != null)
             {
-                var withdrawMapped = _mapper.Map<WithdrawModel>(withdrawDto);
+                AccountModel balance = await _accountRepository.GetBalance();
+                balance.ActualBalance += WithdrawFounded.Amount;
 
-                var transferChanged = await _repository.UpdateWithdraw(withdrawMapped);
+                var depositMapped = _mapper.Map<WithdrawModel>(withdrawDto);
+                balance.ActualBalance -= depositMapped.Amount;
+                if (balance.ActualBalance < 0)
+                {
+                    balance.ActualBalance = 0;
+                }
+                await _accountRepository.UpdateBalance(balance);
 
-                return _mapper.Map<ReadWithdrawDto>(transferChanged);
+                var withDrawChanged = await _repository.UpdateWithdraw(depositMapped);
+                return _mapper.Map<ReadWithdrawDto>(withDrawChanged);
             }
 
             throw new Exception($"Withdraw for id: {withdrawDto.Id} wasn't found");
@@ -59,11 +84,18 @@ namespace PersonalBankServices.Repositories
 
         public async Task<bool> DeleteWithdraw(int id)
         {
-            bool withdrawDeleted = await _repository.DeleteWithdraw(id);
+            var withdrawToDelete = await SearchById(id);
 
-            if (withdrawDeleted != false)
+            if (withdrawToDelete != null)
             {
-                return true;//TODO sucess message
+                var balance = await _accountRepository.GetBalance();
+                balance.ActualBalance += withdrawToDelete.Amount;
+                await _accountRepository.UpdateBalance(balance);
+                if (balance.ActualBalance < 0)
+                {
+                    balance.ActualBalance = 0;
+                }
+                return await _repository.DeleteWithdraw(id);
             }
 
             throw new Exception($"Withdraw for id: {id} wasn't found");
